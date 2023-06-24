@@ -1,0 +1,112 @@
+*, *::after, *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.colorSwitch{
+    background-color: gray;
+}
+
+
+#search-bar{
+display: none;
+margin-top: 10px;
+}
+
+#loadingGif{
+display: none;
+}
+
+#data-weatherDetails{
+   display: none;
+   font-size: 1.3rem;
+}
+
+h1{
+    padding-top: 50px;
+}
+
+.wrapper{
+    width:100vw;
+    height:110vh;
+    color: white;
+    text-align: center;
+    background-image: linear-gradient(160deg, #112d4e 0%, #3f72af 100%);
+    
+}
+
+.top-heading{
+    padding-top: 50px;
+}
+
+.default-margin{
+    margin: 20px;
+}
+
+.weather-cards{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+#loadingGif{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.location{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.data-switch{
+    padding: 50px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.switches{
+    width: 150px;
+    height: 25px;
+}
+#search-box{
+    all: unset;
+    background-color: rgba(219, 226, 239, 0.5);
+    color: white;
+    padding-left: 20px;
+    border-radius: 10px;
+    width: 500px;
+    height: 40px;
+}
+#search-btn{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    
+    background-color: #3f72af;
+}
+.btn-locationAcess{
+    font-size: 1.5rem;
+    width: 200px;
+    height: 50px;
+    color: white;
+    background-color: #3f72af;
+    border: 0;
+    border-radius: 25%;
+    transition: scale 0.5s ease-in-out;
+}
+.btn-locationAcess:hover{
+    border: 2px solid #112d4e;
+    scale: 1.2;
+    color: #112d4e;
+    cursor: pointer;
+    
+}
+
+.switches{
+    transition: scale 0.3s ease-in-out;
+}
+.switches:hover{
+    scale: 1.2;
+    background-color: gray;
+    cursor: pointer;
+}

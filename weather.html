@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <link rel="stylesheet" href="./weather.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- heading -->
+        <h1>Weather</h1>
+
+        <!-- top-buttons for switching -->
+        <div class="data-switch ">
+            <button id="btn-localWeather" onclick="switchToCurrentWeather()" class="colorSwitch switches">Your Weather</button>
+            <button id="btn-searchWeather" onclick="switchToSearchWeather()" class="switches">Search weather</button>
+        </div>
+
+        <!-- granting access for location  -->
+        <div id="grantAcessDiv">
+            <img src="./assets/location.png" alt="img-location-symbol" class="loaction-symbol default-margin" width="150px" height="150px">
+            <h1 class="location-access default-margin">Grant location access</h1>
+            <p class="default-margin">Allow access to get weather information</p>
+            <button class="btn-locationAcess default-margin" onclick="getLocation()">Grant access</button>
+        </div>
+
+        <!-- search bar  -->
+        <form id="search-bar">
+
+            <input type="text" placeholder="Searh for a city..." id="search-box">
+            <button id="search-btn" type="submit">
+                <img src="./assets/search.png" alt="search" id="search-btn" width="15px" height="15px">
+            </button>
+
+        </form>
+
+        <!-- loading icon  -->
+        <img src="./assets/loading.gif" alt="loading..." id="loadingGif" width="250px" height="250px">
+
+        <!-- all content  -->
+        <div id="data-weatherDetails">
+            <!-- city name and flag  -->
+            <div class="location default-margin">
+                <div class="location-name"></div>
+                <img class="country-flag" src="">
+            </div>
+            <!-- weather condition like broken-clouds,haze,mist  -->
+            <div class="weather-condition default-margin"></div>
+            <!-- related image to above condition  -->
+            <img src="" alt="img-notLoaded" class="weather-img" />
+            <!-- current temperature -->
+            <div class="temp default-margin"></div>
+            <!-- card showing windspeed humidiy and clouds  -->
+            <div class="weather-cards">
+                <div class="windspeed">
+                    <img src="./assets/wind.png" alt="wind-img" />
+                    <p>WINDSPEED</p>
+                    <div class="windspeed-info"></div>
+                </div>
+                <div class="humidity">
+                    <img src="./assets/humidity.png" alt="humidity-img" />
+                    <p>HUMIDITY</p>
+                    <div class="humidity-info"></div>
+                </div>
+                <div class="clouds">
+                    <img src="./assets/cloud.png" alt="cloud-img" />
+                    <p>CLOUDS</p>
+                    <div class="clouds-info"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="weather.js"></script>
+</body>
+
+</html>
