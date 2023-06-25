@@ -20,35 +20,17 @@ const searchBtn = document.querySelector("#search-btn");
 const API_KEY = "3c894ac1c5f8a1dbb6ec8e4227b892da";
 let city = "";
 
-// function renderWeatherDetails(data){
-//     let newPara = document.createElement('p');
-//     newPara.textContent = `${data?.main?.temp.toFixed(2)} °C`;
-//     document.body.appendChild(newPara);
-// }
-async function showWeatherCity(city){
-    try{
-        loading.style.display = "block";
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
-        dataWeather = await response.json();
-        console.log("Weather data:-> " , dataWeather);
-        setWeatherDetails();
-        loading.style.display = "none";
-        mainInfo.style.display = "block";
+initialCheck(); // caliing when program started
+// at starting if initial check was successful it will show the weather of corrdiates stored
+// in browser otherwise access location page will appear
+
+function initialCheck(){
+    if(sessionStorage.latitude && sessionStorage.longitude){
+        accessLocation.style.display = "none";
+        showCustomWeather();
     }
-    catch(e){
-        console.log('Error is: ',e);
-    }
+    
 }
-
-searchBar.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let cityName = searchBox.value; 
-
-    if(cityName === "")
-        return;
-    else 
-        showWeatherCity(cityName);
-})
 
 async function showCustomWeather(){
     try{
@@ -82,8 +64,30 @@ function setWeatherDetails(){
 
 }
 
+async function showWeatherCity(city){
+    try{
+        loading.style.display = "block";
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
+        dataWeather = await response.json();
+        console.log("Weather data:-> " , dataWeather);
+        setWeatherDetails();
+        loading.style.display = "none";
+        mainInfo.style.display = "block";
+    }
+    catch(e){
+        console.log('Error is: ',e);
+    }
+}
 
-  
+searchBar.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let cityName = searchBox.value; 
+
+    if(cityName === "")
+        return;
+    else 
+        showWeatherCity(cityName);
+})
 
 function getLocation() {
     if(navigator.geolocation) {
@@ -104,8 +108,6 @@ function showPosition(position) {
     showCustomWeather();
 }
 
-// self code below
-
 
 function switchToCurrentWeather(){
     currentWeather.classList.add("colorSwitch");
@@ -124,18 +126,7 @@ function switchToSearchWeather(){
     searchBar.style.display = "block";
 }
 
-function initialCheck(){
-    if(sessionStorage.latitude && sessionStorage.longitude){
-        accessLocation.style.display = "none";
-        showCustomWeather();
-    }
-    // else{
-    //     getLocation();
-    //     accessLocation.style.display = "none";
-    //     showCustomWeather();
-    // }
-}
 
 
 
-initialCheck();
+
