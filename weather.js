@@ -16,6 +16,7 @@ const loading = document.querySelector("#loadingGif");
 const searchBar = document.querySelector("#search-bar");
 const searchBox = document.querySelector("#search-box");
 const searchBtn = document.querySelector("#search-btn");
+const error = document.querySelector("#errorDiv");
 
 const API_KEY = "3c894ac1c5f8a1dbb6ec8e4227b892da";
 let city = "";
@@ -66,6 +67,7 @@ function setWeatherDetails(){
 
 async function showWeatherCity(city){
     try{
+        error.style.display = "none";
         loading.style.display = "block";
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
         dataWeather = await response.json();
@@ -76,6 +78,8 @@ async function showWeatherCity(city){
     }
     catch(e){
         console.log('Error is: ',e);
+        loading.style.display = "none";
+        error.style.display = "block";
     }
 }
 
@@ -112,6 +116,7 @@ function showPosition(position) {
 function switchToCurrentWeather(){
     currentWeather.classList.add("colorSwitch");
     searchWeather.classList.remove("colorSwitch");
+    error.style.display = "none";
     searchBar.style.display = "none";
     mainInfo.style.display = "none";
     accessLocation.style.display = "block";
@@ -121,6 +126,7 @@ function switchToCurrentWeather(){
 function switchToSearchWeather(){
     currentWeather.classList.remove("colorSwitch");
     searchWeather.classList.add("colorSwitch");
+    error.style.display = "none";
     accessLocation.style.display = "none";
     mainInfo.style.display = "none";
     searchBar.style.display = "block";
