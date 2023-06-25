@@ -38,7 +38,7 @@ async function showCustomWeather(){
         loading.style.display = "block";
         let latitude = sessionStorage.latitude;
         let longitude = sessionStorage.longitude;
-        const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`)
+        const result = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`)
         dataWeather = await result.json();
         console.log("Weather data(in JSON format):-> " , dataWeather);
         setWeatherDetails();
