@@ -45,7 +45,8 @@ h1{
 
 .wrapper{
     width:100vw;
-    height:110vh;
+    height: 100vh;
+    overflow: auto;
     color: white;
     text-align: center;
     background-image: linear-gradient(160deg, #112d4e 0%, #3f72af 100%);
@@ -122,4 +123,19 @@ h1{
     scale: 1.2;
     background-color: gray;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 500px){
+    
+    .weather-cards{
+        flex-direction: column;
+    }
+    .data-switch{
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    #search-box{
+        width: 80vw;
+    }
 }
